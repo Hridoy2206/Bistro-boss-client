@@ -36,7 +36,7 @@ const Testimonials = () => {
                                 value={review.rating}
                                 readOnly
                             />
-                            <AiOutlineCluster className='text-center w-full text-5xl mb-5 hidden' />
+                            <AiOutlineCluster className='text-center w-full text-5xl mb-5 hidden lg:block' />
 
                             <p>{review.details}</p>
                             <p className='text-orange-400 text-2xl font-semibold'>{review.name}</p>
