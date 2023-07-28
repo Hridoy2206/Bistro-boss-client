@@ -30,7 +30,7 @@ const Catagory = () => {
                     clickable: true,
                 }}
                 breakpoints={{
-                    400: {
+                    300: {
                         slidesPerView: 2,
                         spaceBetween: 10,
                     },
