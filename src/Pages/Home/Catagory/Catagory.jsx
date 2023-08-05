@@ -15,7 +15,7 @@ import { useState } from 'react';
 
 const Catagory = () => {
     return (
-        <div className='lg:w-10/12 mx-auto mb-16 '>
+        <div className='lg:w-10/12 px-4 mx-auto mb-16 '>
             <SectionHeading
                 subheading={"-- From 11:00 am to 10:00 pm --"}
                 heading={"ORDER ONLINE"}
