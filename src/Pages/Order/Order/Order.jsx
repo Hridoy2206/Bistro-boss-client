@@ -37,7 +37,7 @@ const Order = () => {
             </Helmet>
             <CoverBanner bgImage={coverImg} title="Our shop" />
 
-            {/*Using Tabs*/}
+            {/*-------Using Tabs--------*/}
             <Tabs defaultIndex={tabIndex} onSelect={(index) => setTabIndex(index)} className=" mt-16 mb-12 uppercase font-sans font-semibold ">
                 <TabList className="flex gap-0 lg:gap-10 text-center flex-1 justify-center cursor-pointer">
                     <Tab>Salad</Tab>
