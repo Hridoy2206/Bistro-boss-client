@@ -5,11 +5,15 @@ import { AiTwotoneHome, AiOutlineMenu } from "react-icons/ai"
 import { BsCalendar3 } from "react-icons/bs"
 import { BiSolidMessageAltDetail } from "react-icons/bi"
 import useCart from '../hooks/useCart';
+import { Helmet } from 'react-helmet-async';
 
 const Dashboard = () => {
     const [cart] = useCart()
     return (
         <div className="drawer lg:drawer-open">
+            <Helmet>
+                <title>Bistro Boss | Home</title>
+            </Helmet>
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
             <div className="drawer-content flex flex-col items-center justify-center bg-base-200">
                 {/* Page content here */}
