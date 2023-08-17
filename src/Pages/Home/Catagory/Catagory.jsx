@@ -11,6 +11,8 @@ import slide3 from "../../../assets/home/slide3.jpg"
 import slide4 from "../../../assets/home/slide4.jpg"
 import slide5 from "../../../assets/home/slide5.jpg"
 import SectionHeading from '../../../component/SectionHeading/SectionHeading';
+import { useContext } from 'react';
+import { AuthContext } from '../../../providers/AuthProvider';
 
 const Catagory = () => {
     return (

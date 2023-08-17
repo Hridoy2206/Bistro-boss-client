@@ -90,7 +90,8 @@ const Login = () => {
 
 
                         {/*--------------Sign In button-------------- */}
-                        <input disabled={disabled} type="submit" value="Sign In" className='btn btn-secondary bg-[#e2b56b] border-none hover:bg-[#e2b56b] text-white w-full' />
+                        {/*----------TODO: Button disabled to use chapcha-------*/}
+                        <input disabled={false} type="submit" value="Sign In" className='btn btn-secondary bg-[#e2b56b] border-none hover:bg-[#e2b56b] text-white w-full' />
 
                         <p className="text-[#e2b56b] text-center">New here? <Link to="/signUp">Create a Account</Link> </p>
                         <p className="text-center font-semibold">Or Sign in with</p>
