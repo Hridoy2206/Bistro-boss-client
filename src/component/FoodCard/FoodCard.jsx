@@ -56,12 +56,12 @@ const FoodCard = ({ item }) => {
     }
 
     return (
-        <div className='relative flex flex-col'
+        <div className='relative flex flex-col hover:shadow-md'
             onMouseEnter={() => setShowFull(true)}
             onMouseLeave={() => setShowFull(false)}
         >
             <p className=" absolute top-3 right-4 bg-gray-900 text-gray-200 py-1 px-3 rounded-lg">$ {price}</p>
-            <img src={image} className=' hover:rounded-lg transition-all' alt="" />
+            <img src={image} className=' hover:rounded-lg transition-all h-[220px]' alt="" />
             <div className='bg-[#F3F3F3] text-center p-6 space-y-3'>
                 <h2 className='text-xl font-semibold w-full'>{showFull ? name : changeNameLength}</h2>
                 <p className='text-sm text-left'>{showFull ? recipe : changeRecipeLength}</p>

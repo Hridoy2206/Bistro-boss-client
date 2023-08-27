@@ -3,60 +3,59 @@ import loginImg from "../../assets/others/authentication2.png"
 import { FaFacebookF } from "react-icons/fa"
 import { BsGithub, BsGoogle } from "react-icons/bs"
 import { useForm } from "react-hook-form";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import Swal from 'sweetalert2'
+import SocialLogin from "../../component/SocialLogin/SocialLogin";
 
 
 const SignUp = () => {
     const { register, handleSubmit, reset, formState: { errors }, } = useForm();
-    const { createUser, updateUser } = useContext(AuthContext);
+    const { createUser, updateUser, setLoading } = useContext(AuthContext);
+    const [emailError, setEmailError] = useState('');
     const navigate = useNavigate();
     const location = useLocation()
 
     const from = location.state?.from?.pathname || "/";
 
     const onSubmit = (data) => {
-        console.log(data);
         createUser(data.email, data.password)
             .then(result => {
                 const logedUser = result.user;
-                console.log(logedUser);
                 updateUser(data.name, data.photoURL)
                     .then(() => {
-                        console.log("user profile updated");
-                        Swal.fire({
-                            position: 'top-end',
-                            icon: 'success',
-                            title: 'User Created Successfully',
-                            showConfirmButton: false,
-                            timer: 1500
+                        const saveUser = { name: data.name, email: data.email }
+                        fetch('http://localhost:5000/users', {
+                            method: 'POST',
+                            headers: {
+                                'content-type': 'application/json'
+                            },
+                            body: JSON.stringify(saveUser)
                         })
-                        navigate(('/'), { state: { from: location } });
+                            .then(res => res.json())
+                            .then(data => {
+                                if (data.insertedId) {
+                                    console.log("user profile updated");
+                                    Swal.fire({
+                                        position: 'top-end',
+                                        icon: 'success',
+                                        title: 'User Created Successfully',
+                                        showConfirmButton: false,
+                                        timer: 1500
+                                    })
+                                }
+                            })
+                        navigate('/');
 
                     }).catch(errors => {
-                        reset()
                         console.log(errors)
+                        reset()
                     })
 
 
 
             })
     }
-
-    // const { createUser } = useContext(AuthContext)
-    // const handleSignUp = (event) => {
-    //     event.preventDefault()
-    //     const form = event.target;
-    //     const email = form.email.value;
-    //     const password = form.password.value;
-    //     console.log(email, password);
-
-    //     createUser(email, password)
-    //         .then(result => {
-    //             const user = result.user;
-    //             console.log(user);
-    //         })
 
 
     return (
@@ -89,6 +88,7 @@ const SignUp = () => {
                             <p className="mb-1">Email</p>
                             <input type="email" {...register("email", { required: true })} name="email" placeholder="Type Password" className="p-2 outline-none w-full rounded-md" />
                             {errors.email && <span className="text-red-600 mt-1">Email is required</span>}
+                            {emailError && <span className="text-red-600 mt-1">{emailError}</span>}
                         </div>
 
                         {/*------------Password Field-------------*/}
@@ -111,17 +111,7 @@ const SignUp = () => {
                         <p className="text-center font-semibold">Or Sign in with</p>
 
                         {/* -----------Social medea sign in-------------*/}
-                        <div className="flex gap-5 justify-center text-center w-full mx-auto">
-                            <div className="text-2xl border border-gray-800 p-2 rounded-full cursor-pointer active:scale-105 duration-300 transition-all ">
-                                <FaFacebookF />
-                            </div>
-                            <div className="text-2xl border border-gray-800 p-2 rounded-full cursor-pointer active:scale-105 duration-300 transition-all ">
-                                <BsGoogle />
-                            </div>
-                            <div className="text-2xl border border-gray-800 p-2 rounded-full cursor-pointer active:scale-105 duration-300 transition-all ">
-                                <BsGithub />
-                            </div>
-                        </div>
+                        <SocialLogin />
                     </form>
                 </div>
             </div>

@@ -8,6 +8,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import Swal from 'sweetalert2'
 import { useForm } from "react-hook-form";
+import SocialLogin from "../../component/SocialLogin/SocialLogin";
 const Login = () => {
     const { reset, formState: { errors }, } = useForm();
     const [disabled, setDisabled] = useState(true);
@@ -97,17 +98,7 @@ const Login = () => {
                         <p className="text-center font-semibold">Or Sign in with</p>
 
                         {/* -----------Social medea sign in-------------*/}
-                        <div className="flex gap-5 justify-center text-center w-full mx-auto">
-                            <div className="text-2xl border border-gray-800 p-2 rounded-full cursor-pointer active:scale-105 duration-300 transition-all ">
-                                <FaFacebookF />
-                            </div>
-                            <div className="text-2xl border border-gray-800 p-2 rounded-full cursor-pointer active:scale-105 duration-300 transition-all ">
-                                <BsGoogle />
-                            </div>
-                            <div className="text-2xl border border-gray-800 p-2 rounded-full cursor-pointer active:scale-105 duration-300 transition-all ">
-                                <BsGithub />
-                            </div>
-                        </div>
+                        <SocialLogin />
                     </form>
                 </div>
             </div>

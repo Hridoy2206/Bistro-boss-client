@@ -24,6 +24,7 @@ const Order = () => {
     const Soup = menu.filter((item) => item.category === 'soup');
     const Dessert = menu.filter((item) => item.category === 'dessert');
     const Drinks = menu.filter((item) => item.category === 'drinks');
+    const DeshiFood = menu.filter((item) => item.category === 'Deshi Food');
 
     useEffect(() => {
         // Update the tab index whenever the category changes
@@ -45,6 +46,7 @@ const Order = () => {
                     <Tab>Soup</Tab>
                     <Tab>Dessert</Tab>
                     <Tab>Drinks</Tab>
+                    <Tab>Deshi food</Tab>
                 </TabList>
                 <TabPanel>
                     <OrderTab item={Salad}></OrderTab>
@@ -60,6 +62,9 @@ const Order = () => {
                 </TabPanel>
                 <TabPanel>
                     <OrderTab item={Drinks}></OrderTab>
+                </TabPanel>
+                <TabPanel>
+                    <OrderTab item={DeshiFood}></OrderTab>
                 </TabPanel>
             </Tabs>
         </div>

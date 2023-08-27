@@ -34,6 +34,9 @@ const Menu = () => {
             {/*Soup*/}
             <Cover coverImg={SoupImg} title="Soup" />
             <OurMenuItem categoryName="soup" />
+            {/*Soup*/}
+            <Cover coverImg={SoupImg} title="Soup" />
+            <OurMenuItem categoryName="Deshi food" />
         </div>
     );
 };

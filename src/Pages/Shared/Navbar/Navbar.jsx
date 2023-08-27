@@ -37,9 +37,8 @@ const Navbar = () => {
     const navList = <>
         <li><Link to="/">Home</Link></li>
         <li><Link to="/contacts">Contact</Link></li>
-        <li><Link to="/secret">Secret</Link></li>
-        <li><Link to="/featured">Featured</Link></li>
         <li><Link to="/menu">Our Menu</Link></li>
+        <li><Link to="/dashboard/my-cart">Dashboard</Link></li>
         <li> <Link to={`/order/salad`}>Order Food</Link></li>
         <li className="rounded-full lg:p-2 px-2 py-2 bg-green-700 border text-white">
             <Link to='/dashboard/my-cart' className="flex" >
