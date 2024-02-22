@@ -4,6 +4,7 @@ import useCart from '../../hooks/useCart';
 import { RiDeleteBin5Line } from "react-icons/ri"
 import Swal from 'sweetalert2';
 import SectionHeading from '../../component/SectionHeading/SectionHeading';
+import { Link } from 'react-router-dom';
 
 const MyCart = () => {
     const [cart, refetch] = useCart();
@@ -50,7 +51,7 @@ const MyCart = () => {
                 <div className="lg:text-3xl text-xl flex  mb-8 w-full ">
                     <h2 className='grow'>Total Orders: {cart.length}</h2>
                     <h2 className='grow'>Total Price: ${total}</h2>
-                    <button className='lg:px-6 px-2 py-1 rounded-lg bg-[#D1A054] text-white'>Pay</button>
+                    <Link to="/dashboard/payment"><button className='lg:px-6 px-2 py-1 rounded-lg bg-[#D1A054] text-white active:scale-95 duration-300'>Pay</button></Link>
                 </div>
 
                 <div className="overflow-x-auto">
@@ -89,7 +90,7 @@ const MyCart = () => {
                                     <td>{item.price}</td>
 
                                     <th>
-                                        <button onClick={() => handleDelete(item)} className=" text-2xl text-white rounded-md bg-red-500 active:scale-95 duration-300 px-4 py-2"><RiDeleteBin5Line /></button>
+                                        <button onClick={() => handleDelete(item)} className=" text-2xl text-white rounded-md bg-red-500 active:scale-95 duration-300 px-4 py-2 "><RiDeleteBin5Line /></button>
                                     </th>
                                 </tr>)
                             }

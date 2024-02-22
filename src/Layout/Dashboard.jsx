@@ -7,7 +7,6 @@ import { BsCalendar3 } from "react-icons/bs"
 import { BiSolidMessageAltDetail, BiSolidBookAlt } from "react-icons/bi"
 import useCart from '../hooks/useCart';
 import { Helmet } from 'react-helmet-async';
-import SectionHeading from '../component/SectionHeading/SectionHeading';
 import useAdmin from '../hooks/useAdmin';
 
 const Dashboard = () => {

@@ -8,9 +8,10 @@ import img5 from "../../../assets/home/05.png"
 import img6 from "../../../assets/home/06.png"
 const Banner = () => {
     return (
-        <Carousel>
-            <div>
+        <Carousel autoPlay infiniteLoop onChange={onchange} showArrows={true} labels={Animation}>
+            <div style={{ background: `url(${img1})` }}>
                 <img src={img1} />
+                <h2 className='text-5xl text-white font-black absolute top-1/2 left-1/2 bg-[#dddeee] py-12'>Hridoy Ahmed</h2>
             </div>
             <div>
                 <img src={img2} />

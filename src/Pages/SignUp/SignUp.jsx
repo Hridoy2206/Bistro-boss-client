@@ -16,7 +16,6 @@ const SignUp = () => {
     const navigate = useNavigate();
     const location = useLocation()
 
-    const from = location.state?.from?.pathname || "/";
 
     const onSubmit = (data) => {
         createUser(data.email, data.password)
@@ -49,11 +48,8 @@ const SignUp = () => {
 
                     }).catch(errors => {
                         console.log(errors)
-                        reset()
+                        // reset()
                     })
-
-
-
             })
     }
 
@@ -105,7 +101,8 @@ const SignUp = () => {
                             {errors.password?.type === "maxLength" && <span className="text-red-600 mt-1">Password must be less then 20 charanter</span>}
                             {errors.password?.type === "pattern" && <span className="text-red-600 mt-1">Password must have one uppercase one loyarcase one number and one special characters</span>}
                         </div>
-                        {/*------------Sign In Button-------------*/}                        <input type="submit" value="Sign Up" className='btn bg-[#e2b56b] border-none hover:bg-[#e2b56b] text-white w-full' />
+                        {/*------------Sign In Button-------------*/}
+                        <input type="submit" value="Sign Up" className='btn bg-[#e2b56b] border-none hover:bg-[#e2b56b] text-white w-full' />
 
                         <p className="text-[#e2b56b] text-center">Already Registered? <Link to="/login">Go to login</Link> </p>
                         <p className="text-center font-semibold">Or Sign in with</p>

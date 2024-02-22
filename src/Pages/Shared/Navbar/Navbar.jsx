@@ -8,6 +8,7 @@ import { app } from "../../../firebase/firebase.config";
 import { getAuth, signOut } from "firebase/auth";
 import CustomLoading from "../CustomLoading/CustomLoading";
 import useCart from "../../../hooks/useCart";
+import useAdmin from "../../../hooks/useAdmin";
 
 
 const Navbar = () => {
@@ -24,6 +25,7 @@ const Navbar = () => {
         signOut(auth)
             .then(() => {
                 console.log("Logout successful");
+                setLoading(false)
             })
             .catch(error => {
                 console.log(error)
@@ -38,7 +40,7 @@ const Navbar = () => {
         <li><Link to="/">Home</Link></li>
         <li><Link to="/contacts">Contact</Link></li>
         <li><Link to="/menu">Our Menu</Link></li>
-        <li><Link to="/dashboard/my-cart">Dashboard</Link></li>
+        <li><Link to="/dashboard/admin-home">Dashboard</Link></li>
         <li> <Link to={`/order/salad`}>Order Food</Link></li>
         <li className="rounded-full lg:p-2 px-2 py-2 bg-green-700 border text-white">
             <Link to='/dashboard/my-cart' className="flex" >

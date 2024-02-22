@@ -2,10 +2,42 @@ import SectionHeading from "../../../component/SectionHeading/SectionHeading";
 import useMenu from "../../../hooks/useMenu";
 import { RiDeleteBin5Line } from "react-icons/ri"
 import { MdSystemUpdateAlt } from "react-icons/md"
+import Swal from "sweetalert2";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const ManageItem = () => {
-    const [menu] = useMenu()
+    const [menu, , refetch] = useMenu()
+    const [axiosSecure] = useAxiosSecure()
     console.log(menu);
+    const handleDelete = item => {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`http://localhost:5000/menu/${item._id}`, {
+                    method: 'DELETE',
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.deletedCount > 0) {
+                            Swal.fire(
+                                'Deleted!',
+                                `${menu.name} has been deleted`,
+                                'success'
+                            )
+                            console.log(data);
+                            refetch()
+                        }
+                    })
+            }
+        })
+    }
     return (
         <div className="w-10/12 mx-auto">
             <SectionHeading subheading={'harry up'} heading={'Manage item'} />

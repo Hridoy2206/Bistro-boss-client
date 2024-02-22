@@ -3,6 +3,7 @@ import { BsGithub, BsGoogle } from "react-icons/bs"
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import { useLocation, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const SocialLogin = () => {
     const navigate = useNavigate()
@@ -25,6 +26,13 @@ const SocialLogin = () => {
                 })
                     .then(res => res.json())
                     .then(() => {
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'Login successfully',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
                         navigate(from, { replace: true });
                     })
             })
